@@ -1,5 +1,48 @@
+
 // Fix: Import SubmissionContent to resolve undefined name error
-import { Course, Microcredential, Submission, User, SubmissionContent } from './types';
+import { Course, Microcredential, Submission, User, SubmissionContent, DiscussionPost } from './types';
+
+// --- Mock Discussions ---
+const MOCK_DISCUSSIONS: DiscussionPost[] = [
+  {
+    id: 'd-1',
+    userId: 'u-instructor',
+    userName: 'Dr. Jewoong Moon',
+    userRole: 'instructor',
+    userAvatar: 'https://adhc.lib.ua.edu/wp-content/uploads/2024/08/Moon-Jewoong-sq.jpg',
+    content: 'Welcome to the course! As you start Module 1, think about a game you played recently. What made you keep playing? Post your thoughts here.',
+    timestamp: '2024-01-15T09:00:00Z',
+    likes: 15
+  },
+  {
+    id: 'd-2',
+    userId: 'u-124',
+    userName: 'Sarah Miller',
+    userRole: 'student',
+    content: 'I recently played "It Takes Two" with my partner. The mechanics required cooperation, which was frustrating but rewarding. It made me think about how we can force collaboration in classroom settings.',
+    timestamp: '2024-01-15T10:30:00Z',
+    likes: 4
+  },
+  {
+    id: 'd-3',
+    userId: 'u-125',
+    userName: 'David Chen',
+    userRole: 'student',
+    content: 'Does anyone know if we can use Unity for the final project, or is paper prototyping mandatory?',
+    timestamp: '2024-01-16T14:15:00Z',
+    likes: 1
+  },
+  {
+    id: 'd-4',
+    userId: 'u-instructor',
+    userName: 'Dr. Jewoong Moon',
+    userRole: 'instructor',
+    userAvatar: 'https://adhc.lib.ua.edu/wp-content/uploads/2024/08/Moon-Jewoong-sq.jpg',
+    content: '@David Chen - Great question. For this microcredential, the focus is on design (GDD & Paper Prototype). However, if you are comfortable with Unity, you can submit a digital prototype as supplementary evidence!',
+    timestamp: '2024-01-16T15:00:00Z',
+    likes: 8
+  }
+];
 
 // --- Existing Course Data ---
 export const UA_GAME_DESIGN_COURSE: Course = {
@@ -123,7 +166,8 @@ export const UA_GAME_DESIGN_COURSE: Course = {
       question: "How does AI integrate into this course?",
       answer: "Reflecting Dr. Moon's research, we use AI not just as a topic of study but as a tool. You will have access to an AI Tutor to scaffold your learning process and brainstorm game mechanics."
     }
-  ]
+  ],
+  discussions: MOCK_DISCUSSIONS
 };
 
 // --- Pilot Microcredentials Data ---
@@ -166,7 +210,8 @@ export const PILOT_MICROCREDENTIALS: Microcredential[] = [
         type: 'reflection',
         description: 'A 500-word reflection on the playtesting process and iterations made based on feedback.'
       }
-    ]
+    ],
+    discussions: MOCK_DISCUSSIONS
   },
   {
     id: 'mc-xr-teacher',
@@ -192,6 +237,17 @@ export const PILOT_MICROCREDENTIALS: Microcredential[] = [
         title: 'VR Lesson Plan',
         type: 'artifact',
         description: 'A lesson plan incorporating a specific VR application (e.g., Google Expeditions, Engage).'
+      }
+    ],
+    discussions: [
+      {
+        id: 'd-xr-1',
+        userId: 'u-123',
+        userName: 'Alex Crimson',
+        userRole: 'student',
+        content: 'Has anyone tried using Meta Quest 2 in a classroom setting? I am worried about hygiene.',
+        timestamp: '2024-02-10T11:00:00Z',
+        likes: 2
       }
     ]
   },
@@ -220,7 +276,8 @@ export const PILOT_MICROCREDENTIALS: Microcredential[] = [
         type: 'artifact',
         description: 'A collection of 3 AI-generated educational assets with prompts and critique.'
       }
-    ]
+    ],
+    discussions: []
   }
 ];
 

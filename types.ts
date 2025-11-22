@@ -1,3 +1,4 @@
+
 export enum ViewState {
   LANDING = 'LANDING',
   CATALOG = 'CATALOG',
@@ -39,6 +40,17 @@ export interface FAQItem {
   answer: string;
 }
 
+export interface DiscussionPost {
+  id: string;
+  userId: string;
+  userName: string;
+  userRole: 'instructor' | 'student' | 'admin';
+  userAvatar?: string;
+  content: string;
+  timestamp: string;
+  likes: number;
+}
+
 export interface Course {
   id: string;
   title: string;
@@ -49,6 +61,7 @@ export interface Course {
   description: string;
   modules: Module[];
   faqs: FAQItem[];
+  discussions: DiscussionPost[];
 }
 
 export interface ChatMessage {
@@ -87,6 +100,7 @@ export interface Microcredential {
   recommendedDuration: string;
   image: string;
   courseId?: string; // Link to internal course content if applicable
+  discussions?: DiscussionPost[]; // New: Community discussions
 }
 
 export interface Badge {
